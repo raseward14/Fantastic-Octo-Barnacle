@@ -1,4 +1,10 @@
-.title {
+div.list-item {
+    padding: 10px;
+}
+hr {
+    margin: 0px;
+
+}.title {
     color: black;
     font-family: 'Playfair Display', serif;
     text-align: center;
@@ -69,4 +75,13 @@ body {
 
 .content {
     color: #fff;
-}
+} 
+
+.list-item {
+    padding: 10px;
+}  
+
+ hr {
+    margin: 0px;
+
+} 
