@@ -107,3 +107,19 @@ function getBookInfo() {
 }
 
 // fetch for ebay
+var bookTitleTest = "The Shining";
+
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer <v^1.1#i^1#r^0#I^3#f^0#p^1#t^H4sIAAAAAAAAAOVYfWxTVRRf126Ac6BRYBCU+oAQIH1977V9bV9oScc6VrJP2g02Rbx9777tbe/Ld2/3YUxcFsHEbyOGRKdhotGMvwgaJEBMiBKDsCmiEBETQ+LXJEHCNKJ/+F5bRjfJhqzBJfaf5p577rm/8zvn3HvepXqL56zeUbXj91LbrMLdvVRvoc1Gl1BziovWzLUXLi4qoHIUbLt7l/c6+uw/rkVAkXVuE0S6piLo7FZkFXFpYYhIGSqnASQhTgUKRBzmuXikpppjSIrTDQ1rvCYTzlhFiBAoEPQHkjDIBiEMMLQpVa/ZTGghIsl6WEb0M16e9YvBAG/OI5SCMRVhoOIQwVAM7aIYF00laJbzsZzHT3p8VAvhbIIGkjTVVCEpIpyGy6XXGjlYJ4cKEIIGNo0Q4VikMl4XiVVEaxNr3Tm2wlke4hjgFBo/Wq8J0NkE5BScfBuU1ubiKZ6HCBHucGaH8Ua5yDUwtwA/TTUb5CHP+IDgoYI+EeSHykrNUACeHIclkQSXmFbloIol3DMVoyYbyXbI4+yo1jQRq3Bafw0pIEuiBI0QES2PNEfq64lwok1TAIrKLoRTgrmB7qrfVOHyC14QCLBer4sJ8LwgQDa7UcZaluYJO63XVEGySEPOWg2XQxM1nMiNN4cbU6lOrTMiIrYQ5eoFrnHoZVusoGaimMJtqhVXqJg4nenh1BEYW42xISVTGI5ZmDiRpihEAF2XBGLiZDoXs+nTjUJEG8Y653Z3dXWRXR5SM1rdDEXR7i011XG+DSqAMHWtWs/oS1MvcElpV3horkQSh3t0E0u3masmALWVCHs9HtpPZXkfDys8UfoPQY7P7vEVka8KAUwg4PcnWZH1+ANeSshHhYSzSeq2cMAk6HEpwOiAWJcBD128mWcpBRqSwHl8IuMJiNAlsEHR5Q2KoivpE1gXLUJIQZhM8sHA/6lQbjbV45A3IM5Lructz6PJqsZyn7Ix5VNBVXVc3tCwMbi53YhhORZoE43qzmpBKI9UQLXVG7rZarix87ymw3pNlviePDBg1XoeWfAYQj0wcE8cyrIpmJajyHJ0ZgXZWo9MA0CXSKuwSV5T3BowT3RLtC2NeFo+R3Q9pigpDJIyjOXnNP+PTvIbuieZvc6M8smMXyaQkpBpUsh0NEnUyZMGRFrKMPszss66sxNaB1TNExAbmixDo4medqBvd3ytWp+Cj395Wdya7/nrVGZSbvOyZBK2baZ5dlsiKoEZdhvTLM0E/Swd9E/Lr/XpmCZ6Zto9VKUhDIXJXHNsuMW22j3+Iz9ckP7Rfbb3qT7bvkKbjXJTK+hl1APF9kaH/c7FSMKQlIBIIqlVNb9dDUh2wB4dSEZhsU1vBD+vyHlW2L2VKht7WJhjp0tyXhmoJddniuh5C0sZ2mwYKZr1ma15C7Xs+qyDXuC497n6kde9swb6Omu8ZXvuSP6lvTHvTap0TMlmKypw9NkKul7++tyw8dqzxuDQJ9Hw7NNP/nCqpuTxwUHuyNXjXwpHh+ef23fprtX2ty/3F0SvvNRvK1z84ldl+3eJI2fbz135bEX3ogF275qDKy/8edB4r2lHtKCy8cT3w83NQ93iB3J7x6k/Li34fOfx/e5F7e8KgxuHIu8k+PPPPxaorax48Oyjw8+cX7ck3nbslU9/LSk7cPpu5vj9o54zp5c2zT+8dvYjW44d+Ghvf+lvW8mRE6O7LrTwX7z1lDEwsHLu0YtPfyed6pS+GTlzZOk9vzS8sIrfNnpkXsNDyrPyZfvHh+KrPrzv4ejRnY6T3/af2Hm1rPqn0pPbt4z6m2e/um/7KL54aPmeoScOj25WF67bOpIJ398ns/k48BEAAA==>");
+myHeaders.append("Cookie", "ebay=%5Esbf%3D%23%5E");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("https://api.ebay.com/buy/browse/v1/item_summary/search?q=children of time", requestOptions,)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
