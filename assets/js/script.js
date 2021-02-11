@@ -40,9 +40,18 @@ let pageCount = document.getElementById("pageCount");
 let buyLink = document.getElementById("buyLink");
 let thumbnail = document.getElementById('image');
 
-let ebayButton = document.querySelector(".findListings");
+// Ebay Card Image variables
+let ebayCard1 = document.getElementById("card-1-image");
+let ebayText1 = document.getElementById("card-1-text");
+
+let ebayButton = document.getElementById("ebay-button");
 let bookList = document.querySelector('.book-list');
 let bookDetails = document.getElementById('bookDetails');
+
+// Author and title variables for ebay
+let ebayAuthor = "";
+let ebayTitle = "";
+
 
 goButton.addEventListener('click', getApi);
 
@@ -81,20 +90,24 @@ function getApi(selectedBook) {
 
 }
 
+
 // displays info on first book in search- the default- index of 0
 function searchResults(data) {
 
-    author.textContent = ('Author: ', data['items'][0]['volumeInfo']['authors']);
-    bookTitle.textContent = ('Title: ', data['items'][0]['volumeInfo']['title']);
-    publisher.textContent = ('Publisher: ', data['items'][0]['volumeInfo']['publisher']);
-    pageCount.textContent = ('Page Count: ', data['items'][0]['volumeInfo']['pageCount']);
+
+    author.textContent = ('Author: ' + data['items'][0]['volumeInfo']['authors']);
+    bookTitle.textContent = ('Title: ' + data['items'][0]['volumeInfo']['title']);
+    publisher.textContent = ('Publisher: ' + data['items'][0]['volumeInfo']['publisher']);
+    pageCount.textContent = ('Page Count: ' + data['items'][0]['volumeInfo']['pageCount']);
     var image = data['items'][0]['volumeInfo']['imageLinks']['smallThumbnail'];
     thumbnail.setAttribute('src', image);
     var updateBuyLink = data['items'][0]['saleInfo']['buyLink'];
     buyLink.setAttribute('href', updateBuyLink);
     buyLink.setAttribute('target', null);
 
-    //
+    ebayAuthor = " " + data['items'][0]['volumeInfo']['authors'][0]
+    ebayTitle = data['items'][0]['volumeInfo']['title']
+
 
 }
 
@@ -106,20 +119,81 @@ function getBookInfo() {
     getApi(selectedBook)
 }
 
-// fetch for ebay
-var bookTitleTest = "The Shining";
+// EBAY SECTION
 
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer <v^1.1#i^1#I^3#f^0#p^1#r^0#t^H4sIAAAAAAAAAOVYa2wUVRTubrc1tRYSHj7QxO1UEgPM7p2Z3e3syK5uH9DF0te2FatA7s7caafMq3PvUpZobCshGiT+AUM0kQYkkkB4/MAYDAmJJMIfJRFIqoSEKEYRNUhQFHzMTEvZVtIi3WATN5ts5txzz/3O951z790BfcUlCzbWbfy1zHOfd7AP9Hk9HqYUlBQXLZxR6J1XVAByHDyDfU/0+QYKv12MoaaaQgvCpqFj5F+nqToWXGOMyli6YECsYEGHGsICEYVUYnm9wAaAYFoGMURDpfzJmhgVkUUeyCEQ4SXI8VLItuo3Y7YaMYpDYiQE2UogcxFR5NL2OMYZlNQxgTqJUSxgGRqwNANaWUYIAYFhA0wUdFD+dmRhxdBtlwCg4i5cwZ1r5WCdGCrEGFnEDkLFk4klqcZEsqa2oXVxMCdWfISHFIEkg8c+VRsS8rdDNYMmXga73kIqI4oIYyoYH15hbFAhcRPMXcB3qWbENB/hOcSJkUglE2bzQuUSw9IgmRiHY1EkWnZdBaQThWQnY9RmI92NRDLy1GCHSNb4nZ/mDFQVWUFWjKqtSjyfaGqi4q1dhgZxrUpjkpHsBUy6qaWGrpRCkOcjoRDN8qIoSSgystBwtBGax61UbeiS4pCG/Q0GqUI2ajSeGy6HG9upUW+0EjJxEOX6cTc55Cs7HFGHVcyQLt3RFWk2Tr/7OLkCo7MJsZR0hqDRCOMHXIpiFDRNRaLGD7q1OFI+63CM6iLEFILB3t7eQC8XMKzOIAsAE1yxvD4ldiENUrav0+vD/srkE2jFTUVE9kysCCRr2ljW2bVqA9A7qXiI45hKMML7WFjx8dZ/GHJyDo7tiHx1SEhClZCBfBixPM9J4Xx0SHykSIMODpSGWVqD1hpETBWKiBbtOstoyFIkgQvLLMfLiJYiUZkORWWZToelCM3ICAGE0mkxyv+fGuVOSz2FRAuRvNR63uq8Nl3XVhXWlmXCOqyrT6lLm5dFn+u2kkRN8l2yVb+2XpKqEjVI7wzF7rQbbp+8aJioyVAVMZsHBpxezyMLnCU1QYtkU0hVbcOUEsVOotNLZGc+tgNAUwk4jR0QDS1oQHtHd0yrXcRTyjlhmklNyxCYVlEyP7v5f7ST3zY9xb7rTKucbP2GhVSk4UtKwFUzgNeKAQthI2PZ97NAo3NmtxprkG7vgMQyVBVZ7cyUhb7X+jq9Pgkf//KwuLvc83dTmU61LaqKTdjq6ZbZPVFUgdPsNGYiDBuNcizDTimvalfT1ux0O4fqDEyQNFFqvqV3ea0Ojv2THy9wP8yA5xAY8Bz0ejwgCOYzFaC8uLDNV/jAPKwQFFCgHMBKp27/d7VQYA3KmlCxvMUesw1enJ/zWmFwJXh49MVCSSFTmvOWATx2a6SImflQGcsA9xsCDNsBKm6N+pgHfXO8JWVytXf3/p9Pz/jhlcarN873x0+BslEnj6eowDfgKWjvGeKXPbWju3Rgob9lQ3XD3t+Gzm4Dh+j5Wv+z4ZXZ8uuz3uI2nZuFD+74uOK9Rc3fvDv33JtzwtGs/0zH1z1yxeUL5PXd/f2HLp09V3Hg6e0vFx7YVfnCH0PVG46tqll/uu9t70fa5vObZ8/9iR64/3Rt9Jdrm8ofKb1yZYFP3Xtjz87HRb410lL/SXHP+v3bv7r66I+Xj/WcuPD9tje2Vp/87Eh9lizatfK1qqvHl5iXXv3CnLfPt6Jwa9uJ44c7jx55cs6iM7HQjgNn8OHyL/96qWD2i83UzEEFVGho13dH9+2mP714cnHH7x9aezYXvH8t8efOU7OeWaByQ6u2vLNq5/7uz7dc6lBiHwjXh+X7G7GwM0vwEQAA>");
-myHeaders.append("Cookie", "ebay=%5Esbf%3D%23%5E");
+ebayButton.addEventListener('click', getEbay);
 
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
 
-fetch(`https://api.ebay.com/buy/browse/v1/item_summary/search?q=${bookTitleTest}, requestOptions`)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+function getEbay() {
+
+    var bookTitleEbay = "The Shining";
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer <v^1.1#i^1#r^0#p^1#f^0#I^3#t^H4sIAAAAAAAAAOVYa2wUVRTubrclay2SiPJOlgFCAGd2Hvsc2ZXtA7ukL9ilQH3g3Zm77cC8MnOHdoGYTUUSEzQRiAhFRQwRtfwgBK21BglR/GEQFRIJIBoJMfFJIEENRGdml7KtpCDdYBP3z2bOPffc73zfOffeGTJb7p67sW7jlUrHGOeuLJl1OhxUBekuL5s3ttQ5uayELHBw7MrOzLq6Sn+YrwNJVNklUFcVWYeeTkmUddY2RjBDk1kF6ILOykCCOos4NhFrqGdpgmRVTUEKp4iYJ14TwXw0z6eCZCAIU4wfcsC0ytdjJpUIFqCZMAcZyh/iQdBPh8xxXTdgXNYRkFEEo0mawkkap6gkybB0iPX5iaCPasU8LVDTBUU2XQgSi9pwWXuuVoB1eKhA16GGzCBYNB5bmGiKxWtqG5PzvQWxonkeEgggQx/8VK3w0NMCRAMOv4xue7MJg+OgrmPeaG6FwUHZ2HUwdwDfpprjQkEYBGEQ8pEwBYvC5EJFkwAaHoZlEXg8bbuyUEYCytyKUJOM1CrIofxToxkiXuOx/hYbQBTSAtQiWG1VbEWsuRmLJtsVCei1Iq4jgzcXUPHmJTV4kPeBUCjg8+F0iON4HgbyC+Wi5VkeslK1IvOCxZnuaVRQFTRRw6HcUAXcmE5NcpMWSyMLUaGf/zqHTLDV0jQnooHaZUtWKJk4PfbjrRUYmI2QJqQMBAciDB2wKYpgQFUFHhs6aJdivno69QjWjpDKer0dHR1EB0MoWpuXJknKu7yhPsG1Q8nsRdPX6nXbX7j1BFywU+HM2jL9WZRRTSydZqmaAOQ2LOpjGCpI5nkfDCs61PoPQ0HO3sENUawG8TGABzxHM3ya5IJhfzE6JJovUq+FA6ZABpeAthoiVQQcxDmzzgwJagLPMv40zYTSEOcD4TTuC6fTeMrPB3AqDSEJYSrFhUP/p0a53VJPQE6DqDi1Xqw6r03VLa3yS4sMvwzq6hPio4sXhZet0uJIjIfa01r9mnqer4rVQLnNF7ndbrh58pyiwmZFFLhMMRiwer14LDAa3ww0lElAUTQNI0pUtxIdXSJb83UzAFAFwmpsglMkrwLMHd0yrbQRjyjnmKrGJclAICXCeJF28/9mJ79peoJ51RlVOZn65YQU+NwlhbDVJPQ1HKFBXTE083pGNFlndlJZDWVzB0SaIopQa6FGLPRd1zd3rg/Hx788LO4s9yLeVEZRbXOiYBK2crRldlcUFcAoO42pAMWQlI+i/SPKq9rWNJkZbedQnaIjyA+bmmvhnV2rvYPf8aMl9o/qchwkuxz7nQ4H6SVnUTPI6eWlS12l907WBQQJAaQJXWiTzVdXDRKrYUYFguYsd3RM6NvzYcFXhV1PkBMHviu4S6mKgo8M5NQbI2XUfRMqacq8MFIkQ4d8/lZyxo1RF/Wga7z3xfvvObFgy5vvba5w7P3li+CT6C8nWTng5HCUlbi6HCVg88xvsc0vZSZt/aYVbiC+vzjvtdQOZ3dmd/0r2/xXW+e903ChLb52x3Nff3WOmLuhP739fG9n9uwnb/tOdZ+NznrjzNNnPj15bsqROSelpa/uubjzVMvaK7NmCzhW0bOi1yX/+v62j/q48QuOnvp88qGdbWVX1mf/vLru8uv4Tz8e6qoO7Xuk3b3s0ul3+8u5k5d3/7b18rOne48bp7eGX36qMzrlD+ela9/N6VnT0Bg4fnhv/4GevrlXdz60f/b6h5Pb2S+nzp60vOaDjysfO3ZCfGvaXsf+z8ZWTTta8vyma9vOY2MPBN1HoFr5wO/TJ17Y8sIx99kxl7of7xn3c/fUJc/0j4Pj1lX29rkPHt63KSff38sx1oDvEQAA>");
+    myHeaders.append("Cookie", "ebay=%5Esbf%3D%23%5E");
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch(`https://api.ebay.com/buy/browse/v1/item_summary/search?q=${ebayTitle}${ebayAuthor}&category_ids=267&limit=5`, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            // Logs All Data
+            console.log(data)
+
+            // Title
+            console.log(data.itemSummaries[0].title);
+            let ebayTitle = document.createElement("p")
+            ebayTitle.textContent = data.itemSummaries[0].title
+            ebayText1.appendChild(ebayTitle)
+
+            // Logs Condition
+            console.log(data.itemSummaries[0].condition);
+            let ebayCondition =document.createElement("p")
+            ebayCondition.textContent = "In " + data.itemSummaries[0].condition + " condition"
+            ebayText1.appendChild(ebayCondition)
+
+            // Log Listing Price
+            console.log(data.itemSummaries[0].price.value);
+            let ebayPrice = document.createElement("p")
+            ebayPrice.textContent = "Price: $" + data.itemSummaries[0].price.value
+            ebayText1.appendChild(ebayPrice)
+
+            // Web Link
+            console.log(data.itemSummaries[0].itemWebUrl);
+            let ebayLink = document.createElement("a")
+            ebayLink.setAttribute("href", data.itemSummaries[0].itemWebUrl)
+            ebayLink.setAttribute("target", "blank")
+            ebayLink.textContent = "View Listing" 
+            ebayText1.appendChild(ebayLink)
+
+
+
+            // Add Title to screen
+            // ebayText1.textContent =
+
+
+            
+            // Log Listing Price
+            console.log(data.itemSummaries[0].seller.feedbackPercentage);
+            //Listing Image
+            console.log(data.itemSummaries[0].image.imageUrl);
+            // Add Ebay Image to card 1
+            ebayCard1.setAttribute('src', data.itemSummaries[0].image.imageUrl);
+
+            // Logging Author Name
+            console.log(ebayAuthor);
+            // Log Title
+            console.log(ebayTitle);
+
+        })
+        .catch(error => console.log('error', error));
+
+
+}
+
+
+
