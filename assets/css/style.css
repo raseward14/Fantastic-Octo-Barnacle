@@ -85,3 +85,12 @@ body {
     margin: 0px;
 
 } 
+
+
+#image {
+    height: 290px;
+}   
+
+.is-grouped {
+    padding-bottom: 15px;
+}
