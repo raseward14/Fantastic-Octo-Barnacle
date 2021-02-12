@@ -4,7 +4,9 @@ div.list-item {
 hr {
     margin: 0px;
 
-}.title {
+}
+
+.title {
     color: black;
     font-family: 'Playfair Display', serif;
     text-align: center;
@@ -20,9 +22,7 @@ hr {
 
 }
 
-.hero-body {
-    /* background-color:#8a7e798f; */
-}
+
 
 .panel.is-primary .panel-heading {
     background-color:#8a7e798f;
@@ -84,16 +84,12 @@ body {
     padding: 10px;
 }  
 
- hr {
-    margin: 0px;
 
-} 
 
-<<<<<<< HEAD
 article {
     border-radius: 1rem;
 }
-=======
+
 
 #image {
     height: 290px;
@@ -102,4 +98,4 @@ article {
 .is-grouped {
     padding-bottom: 15px;
 }
->>>>>>> 0f4ea39aeea4c26b430ce9d9f966197088482945
+
