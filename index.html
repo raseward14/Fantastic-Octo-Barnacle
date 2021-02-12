@@ -14,28 +14,25 @@
   </head>
   <body>
     <div class="container is-desktop">
-      <section class="hero is-primary is-small mb-5">
+      <section class="hero is-info is-small mb-5">
         <div class="hero-body">
           <p class="title">
             My Cheap Book Finder
           </p>
         </div>
       </section>
-        <!-- <div class="notification is-primary">
-            <strong> My Cheap Book Finder </strong>
-        </div> -->
     <div class="columns">
       <div class="column is-4">
-        <article class="panel is-primary">
+        <article class="panel is-info">
           <p class="panel-heading mb-2">
             Search Books:
           </p>
           <div class="field is-grouped">
-            <p class="control is-expanded">
+            <p class="control is-expanded pb-2 pl-2 pr-2">
               <input class="input" type="text" placeholder="Title, Author, Catagory or ISBN">
             </p>
             <p class="control">
-              <button id="goButton" class="button is-primary is-outlined">Search</button>
+              <button id="goButton" class="button is-info is-outlined mr-2">Search</button>
             </p>
           </div>
           <div class="book-list"></div>
@@ -44,17 +41,17 @@
       <div class="column is-8">
         <div class="columns">
           <div class="column is-4">
-            <article class="panel is-primary">
+            <article class="panel is-info">
               <p class="panel-heading">
                 Book Image
               </p>
-              <figure class="image is-4by3">
-                <img id="image" src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              <figure class="image is-3by4">
+                <img id="image" src="https://bulma.io/images/placeholders/1280x960.png" alt="First result book cover image">
               </figure>
           </div>
           </article>
           <div class="column is-8">
-            <article class="panel is-primary">
+            <article class="panel is-info">
               <p class="panel-heading">
                 Book Details:
               </p>
@@ -64,14 +61,14 @@
               <p class="panel-block" id="pageCount">Page Count: </p>
               <p class="panel-block"><a id="buyLink">Buy Link</a></p>
             </article>
-            <button id="ebay-button" class="button is-primary is-outlined">Search Ebay Listings</button>
+            <button id="ebay-button" class="button is-info">Search Ebay Listings</button>
           </div>
         </div>
       </div>
     </div>
     <div class="columns">
       <div class="column">
-        <article class="panel is-primary">
+        <article class="panel is-info">
           <p class="panel-heading">
             Ebay Listings:
           </p>
@@ -80,8 +77,8 @@
           <div class="column">
             <div class="card">
               <div class="card-image" id="">
-                <figure class="image is-4by3">
-                  <img id="card-1-image" src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                <figure class="image is-3by4">
+                  <img id="card-1-image" src="https://bulma.io/images/placeholders/1280x960.png" alt="First ebay result book cover image">
                 </figure>
               </div>
               <div class="card-content">
@@ -96,15 +93,14 @@
           <div class="column">
             <div class="card">
               <div class="card-image" id="">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                <figure class="image is-3by4">
+                  <img id="card-2-image" src="https://bulma.io/images/placeholders/1280x960.png" alt="Second ebay result book cover image">
                 </figure>
               </div>
               <div class="card-content">
 
-                <div class="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris.
+                <div id="card-2-text" class="content">
+                  
                 </div>
               </div>
             </div>
@@ -113,53 +109,18 @@
           <div class="column">
             <div class="card">
               <div class="card-image" id="">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                <figure class="image is-3by4">
+                  <img id="card-3-image" src="https://bulma.io/images/placeholders/1280x960.png" alt="Third ebay result book cover image">
                 </figure>
               </div>
               <div class="card-content">
 
-                <div class="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris.
+                <div id="card-3-text" class="content">
+                  
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- <div class="column">
-            <div class="card">
-              <div class="card-image" id="">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-
-                <div class="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris.
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="column">
-            <div class="card">
-              <div class="card-image" id="">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-
-                <div class="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris.
-                </div>
-              </div>
-            </div>
-          </div> -->
 
         </div>
       </div>
