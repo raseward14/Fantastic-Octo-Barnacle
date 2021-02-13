@@ -1,32 +1,3 @@
-// Pseudo Coding for My Cheap Book Finder
-
-//Global Variables Needed
-// Create global variable for DIV with ID "book-info-area" use this variable to create and append elements to this section. 
-
-
-// Searchbox section
-// Create a single searchbox that the user can enter book title, author, or category into. 
-// fetch google books url and return first 5 book titles, authors, and store 5 IDs associated with each result in an array. 
-// Display 5 link options underneath search box and make so when result 1 is chosen, index 0 from IDs array is used as query parameter in second api call to retrieve google book info. Result 2 is index 1 from IDs array etc...
-
-
-
-//Google Book Api Responds with following Items; Book Title, Author, Book Cover Image, Description, retail price, average rating, link to buy book new. 
-
-// Have a button to find book on ebay. Use event listener on button to make an api call using book title and author parameters from google books api response. 
-
-// Ebay Section
-// Create global variable for DIV with ID "ebay-listings-area" use this variable to create and append elements to this section. 
-// Pseudo Coding for My Cheap Book Finder
-//Global Variables Needed
-// Create global variable for DIV with ID "book-info-area" use this variable to create and append elements to this section. 
-// Searchbox section
-// Create a single searchbox that the user can enter book title, author, or category into. 
-// fetch google books url and return first 5 book titles, authors, and store 5 IDs associated with each result in an array. 
-// Display 5 link options underneath search box and make so when result 1 is chosen, index 0 from IDs array is used as query parameter in second api call to retrieve google book info. Result 2 is index 1 from IDs array etc...
-//Google Book Api Responds with following Items; Book Title, Author, Book Cover Image, Description, retail price, average rating, link to buy book new. 
-// Have a button to find book on ebay. Use event listener on button to make an api call using book title and author parameters from google books api response. 
-// Ebay Section
 // Create global variable for DIV with ID "ebay-listings-area" use this variable to create and append elements to this section.
 let searchBar = document.querySelector(".input");
 let goButton = document.querySelector("#goButton");
@@ -51,6 +22,8 @@ let ebayText3 = document.getElementById("card-3-text");
 let ebayButton = document.getElementById("ebay-button");
 let bookList = document.querySelector('.book-list');
 let bookDetails = document.getElementById('bookDetails');
+
+
 
 // Author and title variables for ebay
 let ebayAuthor = "";
@@ -129,8 +102,6 @@ ebayButton.addEventListener('click', getEbay);
 
 function getEbay() {
 
-    var bookTitleEbay = "The Shining";
-
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer <v^1.1#i^1#p^1#r^0#I^3#f^0#t^H4sIAAAAAAAAAOVYa2wUVRTubh9asWKMAiFIylAkAWZ3Zmd2ujuyi9uXXSjdwpYijVLuztxpB+bl3DtdVoI2TagpNakBjfwiVRFDohLkIcRoosYfGogYYiPGmAiaEECFGAJKMM7MLmVbSUG6wSbun82ce+653/m+c+69M1RPWfmCvsa+yxWee7xDPVSP1+Ohp1DlZaULHyj2ziwtovIcPEM9VT0lvcVnFiOgKga/EiJD1xCs3KgqGuJdY4SwTI3XAZIRrwEVIh4LfDK2vIkP+CjeMHWsC7pCVMbrIkSQZWkBigwTAmFABTnbql2P2apHiFBYCkIuQNEix9q+9jBCFoxrCAMNR4gAFaBJKkDSTCvN8WyYp1hfiAu1E5Vt0ESyrtkuPoqIumh5d66ZB3V8pAAhaGI7CBGNxxqSiVi8rr65dbE/L1Y0R0MSA2yh0U+1uggr24BiwfGXQa43n7QEASJE+KPZFUYH5WPXwdwBfJdpjgYCxzHVYSnEpSBgCkJlg26qAI+Pw7HIIim5rjzUsIwzt2LUZiO1Hgo499Rsh4jXVTp/KyygyJIMzQhRXxNbE2tpIaKtXboKUL1CImyJ9gIG2bKyjqwWWRAKcSxLBkKCIIqQyy2UjZajecxKtbomyg5pqLJZxzXQRg3HcsPkcWM7JbSEGZOwgyjfLzTCIdPuiJpV0cJdmqMrVG2cle7jrRUYmY2xKacsDEcijB1wKYoQwDBkkRg76NZirnw2ogjRhbHB+/3pdNqXZny62ekPUBTtf2p5U1LogiogHF+n111/+dYTSNlNRYD2TCTzOGPYWDbatWoD0DqJKMswdDWV4300rOhY6z8MeTn7R3dEoTokzMBqKUUzqRCwWzEYLkSHRHNF6ndwwBTIkCowN0BsKECApGDXmaVCUxZ5JigFmJAESZELSyQbliQyFRQ5kpYgpCBMpYRw6P/UKLdb6kkomBAXptYLVef1qcZVNUF1qRXUQGNTUnlyxdLw6vVmHCvxUJdkNnU3iWJNrA5qnWzkdrvh5skLugFbdEUWMoVgwOn1wrHAmGILMHEmCRXFNkwoUeQkOrlEduYjOwAwZJ/T2D5BV/06sHd0x9ThIp5QzjHDiKuqhUFKgfEC7eb/zU5+0/Rk+64zqXKy9csKKYvZS4rPVdOHugWfCZFumfb9zJdwzuxWfQPU7B0Qm7qiQLONnrDQd13f7Lk+Hh//8rC4s9wLeFOZRLUtKLJNWMdky+yuKCqDSXYa0xzNBBg2zLITyqvW1bQ1M9nOoUYdYSiOm1pJw51dq/2j3/GjRe6P7vUcpHo9+7weD+Wn5tFzqTllxatKiu+fiWQMfTKQfEju1Ox3VxP6NsCMAWTTW+YxVoGz8/K+Kgw9Q80Y+a5QXkxPyfvIQM26MVJKT51eEaDtCyNDc2yYYtupuTdGS+hpJQ9vHUiI5rtvhry/rh3kDv/Q/tof869QFSNOHk9pUUmvp2iHeu7PI/Rgf98X/C7yQFuq++I5+urAq4eWLHxFvDqc2WtFindumyNt3rHss+8+X7Tm9cdOf/rWlvnbDvcM1y748HBzegpz7MSBYWKv/l7/+Uf27N+6djcF04l7F3017ctudXuJNTy4YuGLP06bcfannpMtszd3nOKJTWWz3nhp9/MDiWNPHL84PPWFa/D7E/2ndr38e+L4QO9vD77/tXfP0aGjsztKjzGn18nrBs8sunDoSF8duER6P3nWfDxYuu+4mlhzpapu7YXVT/+VmlGf/mX/R9vF6c9901zecHLL28uaw1qVWnHmA+6+j0/7265s21q+M5Becmn40cHSAwfPl72z7Of+8EPXtqQvf1u7KSvf30uZx7HvEQAA>");
     myHeaders.append("Cookie", "ebay=%5Esbf%3D%23%5E");
@@ -146,6 +117,11 @@ function getEbay() {
         .then(data => {
             // Logs All Data
             console.log(data)
+
+            // Ebay Text set to null
+            ebayText1.innerHTML = "";
+            ebayText2.innerHTML = "";
+            ebayText3.innerHTML = "";
 
             // Title
             console.log(data.itemSummaries[0].title);
