@@ -46,7 +46,7 @@ function getApi(selectedBook) {
     fetch('https://www.googleapis.com/books/v1/volumes?q=' + selectedBook + '')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
 
             // create a list of 5 book titles to choose from, set list empty each click
             bookList.innerHTML = null;
@@ -116,7 +116,7 @@ function getEbay() {
         .then(response => response.json())
         .then(data => {
             // Logs All Data
-            console.log(data)
+            // console.log(data)
 
             // Ebay Text set to null
             ebayText1.innerHTML = "";
@@ -124,69 +124,69 @@ function getEbay() {
             ebayText3.innerHTML = "";
 
             // Title
-            console.log(data.itemSummaries[0].title);
+            // console.log(data.itemSummaries[0].title);
             let ebayTitle1 = document.createElement("p");
             ebayTitle1.textContent = data.itemSummaries[0].title;
             ebayText1.appendChild(ebayTitle1);
 
-            console.log(data.itemSummaries[1].title);
+            // console.log(data.itemSummaries[1].title);
             let ebayTitle2 = document.createElement("p");
             ebayTitle2.textContent = data.itemSummaries[1].title;
             ebayText2.appendChild(ebayTitle2);
 
-            console.log(data.itemSummaries[2].title);
+            // console.log(data.itemSummaries[2].title);
             let ebayTitle3 = document.createElement("p");
             ebayTitle3.textContent = data.itemSummaries[2].title;
             ebayText3.appendChild(ebayTitle3);
 
             // Logs Condition
-            console.log(data.itemSummaries[0].condition);
+            // console.log(data.itemSummaries[0].condition);
             let ebayCondition1 =document.createElement("p");
             ebayCondition1.textContent = "In " + data.itemSummaries[0].condition + " condition";
             ebayText1.appendChild(ebayCondition1);
 
-            console.log(data.itemSummaries[1].condition);
+            // console.log(data.itemSummaries[1].condition);
             let ebayCondition2 =document.createElement("p");
             ebayCondition2.textContent = "In " + data.itemSummaries[1].condition + " condition";
             ebayText2.appendChild(ebayCondition2);
 
-            console.log(data.itemSummaries[2].condition);
+            // console.log(data.itemSummaries[2].condition);
             let ebayCondition3 =document.createElement("p");
             ebayCondition3.textContent = "In " + data.itemSummaries[2].condition + " condition";
             ebayText3.appendChild(ebayCondition3);
 
             // Log Listing Price
-            console.log(data.itemSummaries[0].price.value);
+            // console.log(data.itemSummaries[0].price.value);
             let ebayPrice1 = document.createElement("p");
             ebayPrice1.textContent = "Price: $" + data.itemSummaries[0].price.value;
             ebayText1.appendChild(ebayPrice1);
 
-            console.log(data.itemSummaries[1].price.value);
+            // console.log(data.itemSummaries[1].price.value);
             let ebayPrice2 = document.createElement("p");
             ebayPrice2.textContent = "Price: $" + data.itemSummaries[1].price.value;
             ebayText2.appendChild(ebayPrice2);
 
-            console.log(data.itemSummaries[2].price.value);
+            // console.log(data.itemSummaries[2].price.value);
             let ebayPrice3 = document.createElement("p");
             ebayPrice3.textContent = "Price: $" + data.itemSummaries[2].price.value;
             ebayText3.appendChild(ebayPrice3);
 
             // Web Link
-            console.log(data.itemSummaries[0].itemWebUrl);
+            // console.log(data.itemSummaries[0].itemWebUrl);
             let ebayLink1 = document.createElement("a");
             ebayLink1.setAttribute("href", data.itemSummaries[0].itemWebUrl);
             ebayLink1.setAttribute("target", "blank");
             ebayLink1.textContent = "View Listing";
             ebayText1.appendChild(ebayLink1);
 
-            console.log(data.itemSummaries[1].itemWebUrl);
+            // console.log(data.itemSummaries[1].itemWebUrl);
             let ebayLink2 = document.createElement("a");
             ebayLink2.setAttribute("href", data.itemSummaries[1].itemWebUrl);
             ebayLink2.setAttribute("target", "blank");
             ebayLink2.textContent = "View Listing"; 
             ebayText2.appendChild(ebayLink2);
 
-            console.log(data.itemSummaries[2].itemWebUrl);
+            // console.log(data.itemSummaries[2].itemWebUrl);
             let ebayLink3 = document.createElement("a");
             ebayLink3.setAttribute("href", data.itemSummaries[2].itemWebUrl);
             ebayLink3.setAttribute("target", "blank");
@@ -199,15 +199,15 @@ function getEbay() {
             ebayCard3.setAttribute('src', data.itemSummaries[2].image.imageUrl);
             
             // Log Listing Price
-            console.log(data.itemSummaries[0].seller.feedbackPercentage);
+            // console.log(data.itemSummaries[0].seller.feedbackPercentage);
             //Listing Image
-            console.log(data.itemSummaries[0].image.imageUrl);
+            // console.log(data.itemSummaries[0].image.imageUrl);
             
 
             // Logging Author Name
-            console.log(ebayAuthor);
+            // console.log(ebayAuthor);
             // Log Title
-            console.log(ebayTitle);
+            // console.log(ebayTitle);
 
         })
         .catch(error => console.log('error', error));
