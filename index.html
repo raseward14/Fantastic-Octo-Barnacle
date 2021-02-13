@@ -45,8 +45,8 @@
               <p class="panel-heading">
                 Book Image
               </p>
-              <figure class="image is-3by4">
-                <img id="image"  >
+              <figure id="book-image" class="image is-3by4 is-hidden" >
+                <img id="image"  style ="opacity: 0;">
               </figure>
           </div>
           </article>
@@ -54,19 +54,23 @@
             <article class="panel is-info">
               <p class="panel-heading">
                 Book Details:
-              </p>
-              <p class="panel-block" id="bookTitle">Title: </p>
+              </p> 
+              <div id="book-info" class="is-hidden" style="opacity: 0;">
+                <p class="panel-block" id="bookTitle">Title: </p>
               <p class="panel-block" id="author">Author: </p>
               <p class="panel-block" id="publisher">Publisher: </p>
               <p class="panel-block" id="pageCount">Page Count: </p>
-              <p class="panel-block"><a id="buyLink">Ebook Link</a></p>
+              <p id="buyLinkP" class="panel-block"></p>
+
+              </div>
+              
             </article>
-            <button id="ebay-button" class="button is-info">Search Ebay Listings</button>
+            <button id="ebay-button" class="button is-info is-hidden" style="opacity: 0;">Search Ebay Listings</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="columns">
+    <div id="ebay-section" class="columns is-hidden" style="opacity: 0;">
       <div class="column">
         <article class="panel is-info">
           <p class="panel-heading">
