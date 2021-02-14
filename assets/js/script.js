@@ -23,8 +23,6 @@ let ebayButton = document.getElementById("ebay-button");
 let bookList = document.querySelector('.book-list');
 let bookDetails = document.getElementById('bookDetails');
 
-
-
 // Author and title variables for ebay
 let ebayAuthor = "";
 let ebayTitle = "";
