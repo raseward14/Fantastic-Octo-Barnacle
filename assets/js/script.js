@@ -8,7 +8,7 @@ let author = document.getElementById("author");
 let bookTitle = document.getElementById("bookTitle");
 let publisher = document.getElementById("publisher");
 let pageCount = document.getElementById("pageCount");
-let buyLink = document.getElementById("buyLink");
+// let buyLink = document.getElementById("buyLink");
 let thumbnail = document.getElementById('image');
 
 // Ebay Card Image variables
@@ -30,7 +30,7 @@ let ebayTitle1 = "";
 let ebayTitle2 = "";
 let ebayTitle3 = "";
 
-
+// Event Listener for Search Button
 goButton.addEventListener('click', getApi);
 
 // run for loop on searchbar click
@@ -44,7 +44,6 @@ function getApi(selectedBook) {
     fetch('https://www.googleapis.com/books/v1/volumes?q=' + selectedBook + '')
         .then(response => response.json())
         .then(data => {
-            // console.log(data);
 
             // create a list of 5 book titles to choose from, set list empty each click
             bookList.innerHTML = null;
@@ -54,15 +53,15 @@ function getApi(selectedBook) {
                 var divide = document.createElement('hr')
                 book.textContent = data['items'][i]['volumeInfo']['title'];
                 book.classList.add('list-item');
+                book.setAttribute("style", "opacity: 0;");
                 book.addEventListener('click', getBookInfo);
                 bookList.append(book);
                 bookList.append(divide);
-            }
+                fadeInResults();
 
+            }
             // after list is created, display the results of the first book
             searchResults(data)
-
-            // call ebay functions showing listings for default
 
         })
 
@@ -77,13 +76,45 @@ function searchResults(data) {
     pageCount.textContent = ('Page Count: ' + data['items'][0]['volumeInfo']['pageCount']);
     var image = data['items'][0]['volumeInfo']['imageLinks']['smallThumbnail'];
     thumbnail.setAttribute('src', image);
-    var updateBuyLink = data['items'][0]['saleInfo']['buyLink'];
-    buyLink.setAttribute('href', updateBuyLink);
-    buyLink.setAttribute('target', null);
 
-    ebayAuthor = " " + data['items'][0]['volumeInfo']['authors'][0]
+    if (data['items'][0]['saleInfo']['isEbook'] === true) {
+        var updateBuyLink = data['items'][0]['saleInfo']['buyLink'];
+        $("#buyLinkP").html('<a id="buyLink"></a>')
+        buyLink.setAttribute('href', updateBuyLink);
+        buyLink.setAttribute('target', null);
+        $("#buyLink").text("Ebook Link").removeClass("no-link")
+
+    } else {
+        $("#buyLinkP").addClass("no-link");
+        $("#buyLinkP").text("Ebook Not Available!");
+
+    }
+
+    // Setting author and title Variables based on Google Books Api data
+    ebayAuthor = " " + data['items'][0]['volumeInfo']['authors']
     ebayTitle = data['items'][0]['volumeInfo']['title']
 
+    // Display Book Image After Search
+    var removeBookImage = document.getElementById("book-image")
+    removeBookImage.classList.remove("is-hidden")
+
+    // Display Book Details After Search
+    var removeBookInfo = document.getElementById("book-info")
+    removeBookInfo.classList.remove("is-hidden")
+
+    // Display Ebay Listing Button After Search
+    var removeEbayButton = document.getElementById("ebay-button")
+    removeEbayButton.classList.remove("is-hidden")
+
+    fadeIn();
+
+}
+
+// Fade in Book Info
+function fadeIn() {
+    $("#image").animate({ opacity: "1" });
+    $("#book-info").animate({ opacity: "1" });
+    $("#ebay-button").animate({ opacity: "1" });
 }
 
 // list item, on click, update get api
@@ -99,9 +130,11 @@ function getBookInfo() {
 ebayButton.addEventListener('click', getEbay);
 
 function getEbay() {
+    var removeEbay = document.getElementById("ebay-section")
 
+    removeEbay.classList.remove("is-hidden")
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer <v^1.1#i^1#p^1#r^0#I^3#f^0#t^H4sIAAAAAAAAAOVYa2wUVRTubh9asWKMAiFIylAkAWZ3Zmd2ujuyi9uXXSjdwpYijVLuztxpB+bl3DtdVoI2TagpNakBjfwiVRFDohLkIcRoosYfGogYYiPGmAiaEECFGAJKMM7MLmVbSUG6wSbun82ce+653/m+c+69M1RPWfmCvsa+yxWee7xDPVSP1+Ohp1DlZaULHyj2ziwtovIcPEM9VT0lvcVnFiOgKga/EiJD1xCs3KgqGuJdY4SwTI3XAZIRrwEVIh4LfDK2vIkP+CjeMHWsC7pCVMbrIkSQZWkBigwTAmFABTnbql2P2apHiFBYCkIuQNEix9q+9jBCFoxrCAMNR4gAFaBJKkDSTCvN8WyYp1hfiAu1E5Vt0ESyrtkuPoqIumh5d66ZB3V8pAAhaGI7CBGNxxqSiVi8rr65dbE/L1Y0R0MSA2yh0U+1uggr24BiwfGXQa43n7QEASJE+KPZFUYH5WPXwdwBfJdpjgYCxzHVYSnEpSBgCkJlg26qAI+Pw7HIIim5rjzUsIwzt2LUZiO1Hgo499Rsh4jXVTp/KyygyJIMzQhRXxNbE2tpIaKtXboKUL1CImyJ9gIG2bKyjqwWWRAKcSxLBkKCIIqQyy2UjZajecxKtbomyg5pqLJZxzXQRg3HcsPkcWM7JbSEGZOwgyjfLzTCIdPuiJpV0cJdmqMrVG2cle7jrRUYmY2xKacsDEcijB1wKYoQwDBkkRg76NZirnw2ogjRhbHB+/3pdNqXZny62ekPUBTtf2p5U1LogiogHF+n111/+dYTSNlNRYD2TCTzOGPYWDbatWoD0DqJKMswdDWV4300rOhY6z8MeTn7R3dEoTokzMBqKUUzqRCwWzEYLkSHRHNF6ndwwBTIkCowN0BsKECApGDXmaVCUxZ5JigFmJAESZELSyQbliQyFRQ5kpYgpCBMpYRw6P/UKLdb6kkomBAXptYLVef1qcZVNUF1qRXUQGNTUnlyxdLw6vVmHCvxUJdkNnU3iWJNrA5qnWzkdrvh5skLugFbdEUWMoVgwOn1wrHAmGILMHEmCRXFNkwoUeQkOrlEduYjOwAwZJ/T2D5BV/06sHd0x9ThIp5QzjHDiKuqhUFKgfEC7eb/zU5+0/Rk+64zqXKy9csKKYvZS4rPVdOHugWfCZFumfb9zJdwzuxWfQPU7B0Qm7qiQLONnrDQd13f7Lk+Hh//8rC4s9wLeFOZRLUtKLJNWMdky+yuKCqDSXYa0xzNBBg2zLITyqvW1bQ1M9nOoUYdYSiOm1pJw51dq/2j3/GjRe6P7vUcpHo9+7weD+Wn5tFzqTllxatKiu+fiWQMfTKQfEju1Ox3VxP6NsCMAWTTW+YxVoGz8/K+Kgw9Q80Y+a5QXkxPyfvIQM26MVJKT51eEaDtCyNDc2yYYtupuTdGS+hpJQ9vHUiI5rtvhry/rh3kDv/Q/tof869QFSNOHk9pUUmvp2iHeu7PI/Rgf98X/C7yQFuq++I5+urAq4eWLHxFvDqc2WtFindumyNt3rHss+8+X7Tm9cdOf/rWlvnbDvcM1y748HBzegpz7MSBYWKv/l7/+Uf27N+6djcF04l7F3017ctudXuJNTy4YuGLP06bcfannpMtszd3nOKJTWWz3nhp9/MDiWNPHL84PPWFa/D7E/2ndr38e+L4QO9vD77/tXfP0aGjsztKjzGn18nrBs8sunDoSF8duER6P3nWfDxYuu+4mlhzpapu7YXVT/+VmlGf/mX/R9vF6c9901zecHLL28uaw1qVWnHmA+6+j0/7265s21q+M5Becmn40cHSAwfPl72z7Of+8EPXtqQvf1u7KSvf30uZx7HvEQAA>");
+    myHeaders.append("Authorization", "Bearer <v^1.1#i^1#f^0#p^1#r^0#I^3#t^H4sIAAAAAAAAAOVYa2wUVRTuttsaHtUfotTiY5liEGF2Z2ZnX2N3dfuySwrdsgtCAfHOzJ12yuzMZO6dthuUrFX5hwYqCTESgYgESEQxImgwYqSxookaUSQRFTWKQjABQQNGZ7ZL2VZSkG6wiftnM+eee+73feece+8MlSkbd++qxlXnyh03FG/MUJlih4OeQI0rK515Y0lxZWkRlefg2JiZlnH2lPxUjUBK0bl5EOmaiqCrO6WoiMsaw4RpqJwGkIw4FaQg4rDAJaJzmjjGTXG6oWFN0BTCFasLE7wosX4h6A/6QoLfJwYtq3oxZlILE/6QwDIszfAh6KWDbMAaR8iEMRVhoOIwwVAMTVIMSXuTjJfzURzrc9MM1Uq4FkADyZpqubgpIpKFy2XnGnlYR4YKEIIGtoIQkVi0IdEcjdXVz01We/JiRXI6JDDAJhr6VKuJ0LUAKCYceRmU9eYSpiBAhAhPZGCFoUG56EUw1wA/K3VAZNlQAAYAxfMSwwQLImWDZqQAHhmHbZFFUsq6clDFMk5fSVFLDb4DCjj3NNcKEatz2X8tJlBkSYZGmKiviS6KxuNEJNmupQCqV0iETdFaQCfj8+pIizAIBv0sSzJBQRBF6M8tNBAtJ/OwlWo1VZRt0ZBrroZroIUaDteGzdPGcmpWm42ohG1Eg35skqIvakgHWu2kDmTRxO2qnVeYsnC6so9XzsDgbIwNmTcxHIwwfCArUZgAui6LxPDBbC3myqcbhYl2jHXO4+nq6nJ3ed2a0eZhKIr2LJzTlBDaYQoQlq/d6wP+8pUnkHKWigCtmUjmcFq3sHRbtWoBUNuICOv10gEqp/tQWJHh1n8Y8jh7hnZEoTpEYAMUDfySAAEPKbYQDRLJ1ajHhgF5kCZTwFgOsa4AAZKCVWZmChqyyHl9EuMNSpAU/SGJZEOSRPI+0U/SEoQUhDwvhIL/pz652kpPQMGAuCClXrAyr+cb59f4UrNNnwoamxLKgy2zQw91GDGsxILtktHU2SSKNdE6qLax4atthsuTFzQdxjVFFtKFUMDu9cKp4DXEODBwOgEVxTKMiiiyiY6tJNvzkRUA6LLbbmy3oKU8GrA2dNu0LIt4VJyjuh5LpUwMeAXGCrOZ/0cb+WXpydZVZ0xxsvI3kEhZHLijuLPZdKNOwW1ApJmGdT1zN9tHdlJbDlVrB8SGpijQWECPOtHXPb92r4+sx788LK6Ne+EuKmOptgVFtgRbNtaYXZeMymCMnca0n/YyfophfaPiVZvNaTI91s6hRg1hKI5Izdlwbbdqz9B3/EhR9kf3OF6nehyvFjsclIe6m66ippaVzHeWTKxEMoZuGUhuJLep1qurAd3LYVoHslFc5uia/OaWfXlfFTYupSoGvyuMK6En5H1koG6/NFJK3zS5nKGtC6OX8foo1tdKVV0addK3OiftiZPrj/Tp4a3l7z238Mc3Fse+2/EBVT7o5HCUFjl7HEUrvbG3f9/Qg/dNX1vz/smfb3l3S13DKzubuqb0Vp/BLVVTv3/x08qKnk0HM/G+36rmO0yXfuHMmt19fwTXKY7ew+jEJ1/cedeSbd/M7GxPvlUTWLl5Re+hJb0YPLMnsr+y3ztj04F6umLPn6c/vjmz6NkDDz8/e1b3ds/J8/zmtSf0d/76Nv5SbM3pvcerZ6VbV/BPP7p28f6ip5au/sj5SD/df+DoPbNaTuGp4vEXZuwuP/t57cTyJ10bdq2s+OzYoV1b9yW2dew+98Rr6x5bMf5sq/nLD9umvyzo4qQvJ50/rHbedkffrxemre7uO3rsyHjnfR2BTem9vVOK73c9cJAH20+t//rQ40v6d+7Y+9WHA+n7G2LdHLnvEQAA>");
     myHeaders.append("Cookie", "ebay=%5Esbf%3D%23%5E");
 
     var requestOptions = {
@@ -113,8 +146,6 @@ function getEbay() {
     fetch(`https://api.ebay.com/buy/browse/v1/item_summary/search?q=${ebayTitle}${ebayAuthor}&category_ids=267&limit=5`, requestOptions)
         .then(response => response.json())
         .then(data => {
-            // Logs All Data
-            // console.log(data)
 
             // Ebay Text set to null
             ebayText1.innerHTML = "";
@@ -122,95 +153,91 @@ function getEbay() {
             ebayText3.innerHTML = "";
 
             // Title
-            // console.log(data.itemSummaries[0].title);
-            let ebayTitle1 = document.createElement("p");
+            if (data.itemSummaries !== undefined) {
+                let ebayTitle1 = document.createElement("p");
             ebayTitle1.textContent = data.itemSummaries[0].title;
             ebayText1.appendChild(ebayTitle1);
 
-            // console.log(data.itemSummaries[1].title);
             let ebayTitle2 = document.createElement("p");
             ebayTitle2.textContent = data.itemSummaries[1].title;
             ebayText2.appendChild(ebayTitle2);
 
-            // console.log(data.itemSummaries[2].title);
             let ebayTitle3 = document.createElement("p");
             ebayTitle3.textContent = data.itemSummaries[2].title;
             ebayText3.appendChild(ebayTitle3);
 
             // Logs Condition
-            // console.log(data.itemSummaries[0].condition);
-            let ebayCondition1 =document.createElement("p");
+            let ebayCondition1 = document.createElement("p");
             ebayCondition1.textContent = "In " + data.itemSummaries[0].condition + " condition";
             ebayText1.appendChild(ebayCondition1);
 
-            // console.log(data.itemSummaries[1].condition);
-            let ebayCondition2 =document.createElement("p");
+            let ebayCondition2 = document.createElement("p");
             ebayCondition2.textContent = "In " + data.itemSummaries[1].condition + " condition";
             ebayText2.appendChild(ebayCondition2);
 
-            // console.log(data.itemSummaries[2].condition);
-            let ebayCondition3 =document.createElement("p");
+            let ebayCondition3 = document.createElement("p");
             ebayCondition3.textContent = "In " + data.itemSummaries[2].condition + " condition";
             ebayText3.appendChild(ebayCondition3);
 
             // Log Listing Price
-            // console.log(data.itemSummaries[0].price.value);
             let ebayPrice1 = document.createElement("p");
             ebayPrice1.textContent = "Price: $" + data.itemSummaries[0].price.value;
             ebayText1.appendChild(ebayPrice1);
 
-            // console.log(data.itemSummaries[1].price.value);
             let ebayPrice2 = document.createElement("p");
             ebayPrice2.textContent = "Price: $" + data.itemSummaries[1].price.value;
             ebayText2.appendChild(ebayPrice2);
 
-            // console.log(data.itemSummaries[2].price.value);
             let ebayPrice3 = document.createElement("p");
             ebayPrice3.textContent = "Price: $" + data.itemSummaries[2].price.value;
             ebayText3.appendChild(ebayPrice3);
 
             // Web Link
-            // console.log(data.itemSummaries[0].itemWebUrl);
             let ebayLink1 = document.createElement("a");
             ebayLink1.setAttribute("href", data.itemSummaries[0].itemWebUrl);
             ebayLink1.setAttribute("target", "blank");
             ebayLink1.textContent = "View Listing";
             ebayText1.appendChild(ebayLink1);
 
-            // console.log(data.itemSummaries[1].itemWebUrl);
             let ebayLink2 = document.createElement("a");
             ebayLink2.setAttribute("href", data.itemSummaries[1].itemWebUrl);
             ebayLink2.setAttribute("target", "blank");
-            ebayLink2.textContent = "View Listing"; 
+            ebayLink2.textContent = "View Listing";
             ebayText2.appendChild(ebayLink2);
 
-            // console.log(data.itemSummaries[2].itemWebUrl);
             let ebayLink3 = document.createElement("a");
             ebayLink3.setAttribute("href", data.itemSummaries[2].itemWebUrl);
             ebayLink3.setAttribute("target", "blank");
-            ebayLink3.textContent = "View Listing" ;
+            ebayLink3.textContent = "View Listing";
             ebayText3.appendChild(ebayLink3);
 
             // Add Ebay Image to card 1
             ebayCard1.setAttribute('src', data.itemSummaries[0].image.imageUrl);
             ebayCard2.setAttribute('src', data.itemSummaries[1].image.imageUrl);
             ebayCard3.setAttribute('src', data.itemSummaries[2].image.imageUrl);
-            
-            // Log Listing Price
-            // console.log(data.itemSummaries[0].seller.feedbackPercentage);
-            //Listing Image
-            // console.log(data.itemSummaries[0].image.imageUrl);
+
+            fadeInEbay();
+                
+            } else {
+                ebayAuthor = "";
+                getEbay();
+            }
             
 
-            // Logging Author Name
-            // console.log(ebayAuthor);
-            // Log Title
-            // console.log(ebayTitle);
 
         })
         .catch(error => console.log('error', error));
 
 }
 
+// Fade in Ebay Listings
+function fadeInEbay() {
+    $("#ebay-section").animate({ opacity: "1" });
 
+}
 
+// Fade in Book Search Results
+function fadeInResults() {
+    $(".list-item").animate({ opacity: "1" });
+
+}
