@@ -134,7 +134,7 @@ function getEbay() {
 
     removeEbay.classList.remove("is-hidden")
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer <v^1.1#i^1#f^0#p^1#r^0#I^3#t^H4sIAAAAAAAAAOVYa2wUVRTuttsaHtUfotTiY5liEGF2Z2ZnX2N3dfuySwrdsgtCAfHOzJ12yuzMZO6dthuUrFX5hwYqCTESgYgESEQxImgwYqSxookaUSQRFTWKQjABQQNGZ7ZL2VZSkG6wiftnM+eee+73feece+8MlSkbd++qxlXnyh03FG/MUJlih4OeQI0rK515Y0lxZWkRlefg2JiZlnH2lPxUjUBK0bl5EOmaiqCrO6WoiMsaw4RpqJwGkIw4FaQg4rDAJaJzmjjGTXG6oWFN0BTCFasLE7wosX4h6A/6QoLfJwYtq3oxZlILE/6QwDIszfAh6KWDbMAaR8iEMRVhoOIwwVAMTVIMSXuTjJfzURzrc9MM1Uq4FkADyZpqubgpIpKFy2XnGnlYR4YKEIIGtoIQkVi0IdEcjdXVz01We/JiRXI6JDDAJhr6VKuJ0LUAKCYceRmU9eYSpiBAhAhPZGCFoUG56EUw1wA/K3VAZNlQAAYAxfMSwwQLImWDZqQAHhmHbZFFUsq6clDFMk5fSVFLDb4DCjj3NNcKEatz2X8tJlBkSYZGmKiviS6KxuNEJNmupQCqV0iETdFaQCfj8+pIizAIBv0sSzJBQRBF6M8tNBAtJ/OwlWo1VZRt0ZBrroZroIUaDteGzdPGcmpWm42ohG1Eg35skqIvakgHWu2kDmTRxO2qnVeYsnC6so9XzsDgbIwNmTcxHIwwfCArUZgAui6LxPDBbC3myqcbhYl2jHXO4+nq6nJ3ed2a0eZhKIr2LJzTlBDaYQoQlq/d6wP+8pUnkHKWigCtmUjmcFq3sHRbtWoBUNuICOv10gEqp/tQWJHh1n8Y8jh7hnZEoTpEYAMUDfySAAEPKbYQDRLJ1ajHhgF5kCZTwFgOsa4AAZKCVWZmChqyyHl9EuMNSpAU/SGJZEOSRPI+0U/SEoQUhDwvhIL/pz652kpPQMGAuCClXrAyr+cb59f4UrNNnwoamxLKgy2zQw91GDGsxILtktHU2SSKNdE6qLax4atthsuTFzQdxjVFFtKFUMDu9cKp4DXEODBwOgEVxTKMiiiyiY6tJNvzkRUA6LLbbmy3oKU8GrA2dNu0LIt4VJyjuh5LpUwMeAXGCrOZ/0cb+WXpydZVZ0xxsvI3kEhZHLijuLPZdKNOwW1ApJmGdT1zN9tHdlJbDlVrB8SGpijQWECPOtHXPb92r4+sx788LK6Ne+EuKmOptgVFtgRbNtaYXZeMymCMnca0n/YyfophfaPiVZvNaTI91s6hRg1hKI5Izdlwbbdqz9B3/EhR9kf3OF6nehyvFjsclIe6m66ippaVzHeWTKxEMoZuGUhuJLep1qurAd3LYVoHslFc5uia/OaWfXlfFTYupSoGvyuMK6En5H1koG6/NFJK3zS5nKGtC6OX8foo1tdKVV0addK3OiftiZPrj/Tp4a3l7z238Mc3Fse+2/EBVT7o5HCUFjl7HEUrvbG3f9/Qg/dNX1vz/smfb3l3S13DKzubuqb0Vp/BLVVTv3/x08qKnk0HM/G+36rmO0yXfuHMmt19fwTXKY7ew+jEJ1/cedeSbd/M7GxPvlUTWLl5Re+hJb0YPLMnsr+y3ztj04F6umLPn6c/vjmz6NkDDz8/e1b3ds/J8/zmtSf0d/76Nv5SbM3pvcerZ6VbV/BPP7p28f6ip5au/sj5SD/df+DoPbNaTuGp4vEXZuwuP/t57cTyJ10bdq2s+OzYoV1b9yW2dew+98Rr6x5bMf5sq/nLD9umvyzo4qQvJ50/rHbedkffrxemre7uO3rsyHjnfR2BTem9vVOK73c9cJAH20+t//rQ40v6d+7Y+9WHA+n7G2LdHLnvEQAA>");
+    myHeaders.append("Authorization", "Bearer <v^1.1#i^1#p^1#f^0#r^0#I^3#t^H4sIAAAAAAAAAOVYf2wTVRxv125mIhAcCIIm9dAYkGvv9dfac62069g6OzboVtgSAvfj3Xrb9e5y7x2jIMmYChiV6DRGYzQTxEgMBJWRiAFJCBFDwB/8sUhmNDFGJEgwEkmMondtGd0kG7IGl9h/mvu+7/u+z/fz+X7fe3dUb0Xl4q0NW69Mt95RNtBL9ZZZrWAaVVlR/sgMW9n8cgtV5GAd6H2w195nO1eDmIyk0ishUhUZQceGjCQjOmcMEbom0wqDRETLTAYiGnN0MtKUoN1OilY1BSucIhGOeCxEQFANvAGfTwB8gPW7OcMqX4vZqoSIap+7Gvh5ys9yAYoVWGMcIR3GZYQZGYcIN+UGJOUmQaCVArTbR3uAMwiCHYQjBTUkKrLh4qSIcA4unZurFWEdHyqDENSwEYQIxyPLks2ReKxueWuNqyhWuMBDEjNYR6OfahUeOlKMpMPxl0E5bzqpcxxEiHCF8yuMDkpHroG5Bfg5qv085Dk/H6AAB3ihWigJlcsULcPg8XGYFpEnhZwrDWUs4uxEjBpssF2Qw4Wn5UaIeMxh/q3QGUkURKiFiLpopD3S0kKEW9NKhkF1EomwzhsLqGTLyhhZzXuZQMDv9ZLuAMfxPPQXFspHK9A8ZqVaReZFkzTkWK7gKDRQw7HcgCJuDKdmuVmLCNhEVOznGeHQ22GKmldRx2nZ1BVmDJyO3OPECozMxlgTWR3DkQhjB3IUhQhGVUWeGDuYq8VC+WxAISKNsUq7XD09Pc4ej1PROl1uigKu1U2JJJeGGYYwfM1ez/uLE08gxVwqHDRmIpHGWdXAssGoVQOA3EmEvR4PqKYKvI+GFR5r/YehKGfX6I4oVYcAHvgoiuV5jgOsm/KUokPChSJ1mTggy2TJDKN1Q6xKDAdJzqgzPQM1kac9PsHtCQiQ5P1BgfQGBYFkfbyfBAKEFIQsywUD/6dGudlST0JOg7gktV6yOq9jG9qivkyj7pOZhkRSql/RGFzVpcWxFA+kBS2xPsHz0UgMyp3e0M12w42T5xQVtiiSyGVLwIDZ6yVkwaPxLYyGs0koSYZhUokiM9GpJbI5HxkBGFV0mo3t5JSMS2GMHd00rc0hnlTOEVWNZzI6ZlgJxkuzm/9HO/kN0xONu86UysnQLy+kyOcvKc6cmk60nnNqECm6ZtzPnM3mmd2qdEPZ2AGxpkgS1FJg0kLfbn3NXp+Aj395WNxa7qW7qUyl2uYk0SBs7VTL7LYoKjJT7DQGfuDxA+DzTK5La3Oatman2jnUoCAM+fFSs9ff4rXaNfolP2zJ/UCfdZDqs75fZrVSLuohsJB6oMLWZrfdNR+JGDpFRnAisVM23l016OyGWZURtbIKa8/cQ7sPF31WGFhDzRv5sFBpA9OKvjJQ910fKQcz5053A+PCaLy6ug0VO6iF10ft4B777FOzdn7tDV+sSZ1dc/bdg0v4/W8ef4OaPuJktZZb7H1WS2/3Y771liPDlYfR05aq43M+ufvOZ6qoWNPQ7wtsR3pePNH2nHpC2M4IHzR9cbn9NP3Swc+JyqPtLVHcOeC9/9VjZ7peGLTVb6xd+vPSxrefiM6+EEsN7vvQHpmxccmFCDf08P7QpmN7L+0Msr9Wtf/2fc2eYWnXvERqKHHvj+l5r89ZNavtwKee4cqL6656Ld3qalfHgX7rfJjafXX7Inxxi/+vK8N7L295Sy9rHNh1ckfw6qF3uod+OZ4oOw0+XvzKy/HvjqFz+wKPSn9uQ9vSj5/afP7J2vf2fLWjf8GW+m/teGZV15dnuZ/WfXaSfN43+ENs0aanfOfFM9Ftl4a5/rZnB7/54+jmj17Ly/c3Oz40UvARAAA=>");
     myHeaders.append("Cookie", "ebay=%5Esbf%3D%23%5E");
 
     var requestOptions = {
@@ -155,74 +155,74 @@ function getEbay() {
             // Title
             if (data.itemSummaries !== undefined) {
                 let ebayTitle1 = document.createElement("p");
-            ebayTitle1.textContent = data.itemSummaries[0].title;
-            ebayText1.appendChild(ebayTitle1);
+                ebayTitle1.textContent = data.itemSummaries[0].title;
+                ebayText1.appendChild(ebayTitle1);
 
-            let ebayTitle2 = document.createElement("p");
-            ebayTitle2.textContent = data.itemSummaries[1].title;
-            ebayText2.appendChild(ebayTitle2);
+                let ebayTitle2 = document.createElement("p");
+                ebayTitle2.textContent = data.itemSummaries[1].title;
+                ebayText2.appendChild(ebayTitle2);
 
-            let ebayTitle3 = document.createElement("p");
-            ebayTitle3.textContent = data.itemSummaries[2].title;
-            ebayText3.appendChild(ebayTitle3);
+                let ebayTitle3 = document.createElement("p");
+                ebayTitle3.textContent = data.itemSummaries[2].title;
+                ebayText3.appendChild(ebayTitle3);
 
-            // Logs Condition
-            let ebayCondition1 = document.createElement("p");
-            ebayCondition1.textContent = "In " + data.itemSummaries[0].condition + " condition";
-            ebayText1.appendChild(ebayCondition1);
+                // Logs Condition
+                let ebayCondition1 = document.createElement("p");
+                ebayCondition1.textContent = "In " + data.itemSummaries[0].condition + " condition";
+                ebayText1.appendChild(ebayCondition1);
 
-            let ebayCondition2 = document.createElement("p");
-            ebayCondition2.textContent = "In " + data.itemSummaries[1].condition + " condition";
-            ebayText2.appendChild(ebayCondition2);
+                let ebayCondition2 = document.createElement("p");
+                ebayCondition2.textContent = "In " + data.itemSummaries[1].condition + " condition";
+                ebayText2.appendChild(ebayCondition2);
 
-            let ebayCondition3 = document.createElement("p");
-            ebayCondition3.textContent = "In " + data.itemSummaries[2].condition + " condition";
-            ebayText3.appendChild(ebayCondition3);
+                let ebayCondition3 = document.createElement("p");
+                ebayCondition3.textContent = "In " + data.itemSummaries[2].condition + " condition";
+                ebayText3.appendChild(ebayCondition3);
 
-            // Log Listing Price
-            let ebayPrice1 = document.createElement("p");
-            ebayPrice1.textContent = "Price: $" + data.itemSummaries[0].price.value;
-            ebayText1.appendChild(ebayPrice1);
+                // Log Listing Price
+                let ebayPrice1 = document.createElement("p");
+                ebayPrice1.textContent = "Price: $" + data.itemSummaries[0].price.value;
+                ebayText1.appendChild(ebayPrice1);
 
-            let ebayPrice2 = document.createElement("p");
-            ebayPrice2.textContent = "Price: $" + data.itemSummaries[1].price.value;
-            ebayText2.appendChild(ebayPrice2);
+                let ebayPrice2 = document.createElement("p");
+                ebayPrice2.textContent = "Price: $" + data.itemSummaries[1].price.value;
+                ebayText2.appendChild(ebayPrice2);
 
-            let ebayPrice3 = document.createElement("p");
-            ebayPrice3.textContent = "Price: $" + data.itemSummaries[2].price.value;
-            ebayText3.appendChild(ebayPrice3);
+                let ebayPrice3 = document.createElement("p");
+                ebayPrice3.textContent = "Price: $" + data.itemSummaries[2].price.value;
+                ebayText3.appendChild(ebayPrice3);
 
-            // Web Link
-            let ebayLink1 = document.createElement("a");
-            ebayLink1.setAttribute("href", data.itemSummaries[0].itemWebUrl);
-            ebayLink1.setAttribute("target", "blank");
-            ebayLink1.textContent = "View Listing";
-            ebayText1.appendChild(ebayLink1);
+                // Web Link
+                let ebayLink1 = document.createElement("a");
+                ebayLink1.setAttribute("href", data.itemSummaries[0].itemWebUrl);
+                ebayLink1.setAttribute("target", "blank");
+                ebayLink1.textContent = "View Listing";
+                ebayText1.appendChild(ebayLink1);
 
-            let ebayLink2 = document.createElement("a");
-            ebayLink2.setAttribute("href", data.itemSummaries[1].itemWebUrl);
-            ebayLink2.setAttribute("target", "blank");
-            ebayLink2.textContent = "View Listing";
-            ebayText2.appendChild(ebayLink2);
+                let ebayLink2 = document.createElement("a");
+                ebayLink2.setAttribute("href", data.itemSummaries[1].itemWebUrl);
+                ebayLink2.setAttribute("target", "blank");
+                ebayLink2.textContent = "View Listing";
+                ebayText2.appendChild(ebayLink2);
 
-            let ebayLink3 = document.createElement("a");
-            ebayLink3.setAttribute("href", data.itemSummaries[2].itemWebUrl);
-            ebayLink3.setAttribute("target", "blank");
-            ebayLink3.textContent = "View Listing";
-            ebayText3.appendChild(ebayLink3);
+                let ebayLink3 = document.createElement("a");
+                ebayLink3.setAttribute("href", data.itemSummaries[2].itemWebUrl);
+                ebayLink3.setAttribute("target", "blank");
+                ebayLink3.textContent = "View Listing";
+                ebayText3.appendChild(ebayLink3);
 
-            // Add Ebay Image to card 1
-            ebayCard1.setAttribute('src', data.itemSummaries[0].image.imageUrl);
-            ebayCard2.setAttribute('src', data.itemSummaries[1].image.imageUrl);
-            ebayCard3.setAttribute('src', data.itemSummaries[2].image.imageUrl);
+                // Add Ebay Image to card 1
+                ebayCard1.setAttribute('src', data.itemSummaries[0].image.imageUrl);
+                ebayCard2.setAttribute('src', data.itemSummaries[1].image.imageUrl);
+                ebayCard3.setAttribute('src', data.itemSummaries[2].image.imageUrl);
 
-            fadeInEbay();
-                
+                fadeInEbay();
+
             } else {
                 ebayAuthor = "";
                 getEbay();
             }
-            
+
 
 
         })
